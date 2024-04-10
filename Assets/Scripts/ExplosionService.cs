@@ -26,7 +26,7 @@ public class ExplosionService : MonoBehaviour
 
     private void SpawnParts(Explodable explodable)
     {
-        int explodablePartsAmount = Random.Range(_minExplodableParts, _maxExplodableParts);
+        int explodablePartsAmount = GetRandomPartsAmount();
 
         for (int i = 0; i < explodablePartsAmount; i++)
         {
@@ -40,6 +40,11 @@ public class ExplosionService : MonoBehaviour
 
             explodablePart.AddExplosionForce(_explotionForce, explodable.Position, _explotionRadius);
         }
+    }
+
+    private int GetRandomPartsAmount()
+    {
+        return Random.Range(_minExplodableParts, _maxExplodableParts + 1);
     }
 
     private Color GetRandomColor()
